@@ -24,16 +24,30 @@ class BinaryTreeNodeTest {
     }
 
     @Test
-    void addLeftChild(){
+    void addLeftChildAndGetRightChild(){
 
         nodeADT.addLeftChild(new BinaryTreeNode<>(15));
         assertEquals(15, nodeADT.getLeftChild().getElement());
     }
+
     @Test
-    void addRightChild(){
+    void testLeftChildNullInTheBeginning(){
+        assertNull(nodeADT.getLeftChild());
+    }
+
+    @Test
+    void testRightChildNullInTheBeginning(){
+        assertNull(nodeADT.getRightChild());
+    }
+
+
+
+    @Test
+    void addRightChildAndGetRightChild(){
         nodeADT.addRightChild(new BinaryTreeNode<>(15));
         assertEquals(15, nodeADT.getRightChild().getElement());
     }
+
 
 
 

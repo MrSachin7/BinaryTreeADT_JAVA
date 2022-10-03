@@ -16,25 +16,25 @@ public interface BinaryTreeNodeADT<E> {
      * Add a left Child to the Node
      * @param node
      */
-    void addLeftChild(BinaryTreeNode<E> node);
+    void addLeftChild(BinaryTreeNodeADT<E> node);
 
 
     /**
      *Add a right Child to the Node
      * @param node
      */
-    void addRightChild(BinaryTreeNode<E> node);
+    void addRightChild(BinaryTreeNodeADT<E> node);
 
     /**
      * Returns a reference to the left Child
      * or null if there is no left Child
      */
-    BinaryTreeNode<E> getLeftChild();
+    BinaryTreeNodeADT<E> getLeftChild();
 
     /**
      * Returns a reference to the right Child
      * or null if there is no right Child
      * @return
      */
-    BinaryTreeNode<E> getRightChild();
+    BinaryTreeNodeADT<E> getRightChild();
 }

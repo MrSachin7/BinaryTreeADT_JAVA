@@ -45,12 +45,12 @@ public class BinaryTreePrint   {
 
                 if (current.getElement() != 0) {
                     if (current.getLeftChild() != null) {
-                        children.add(current.getLeftChild());
+                        children.add((BinaryTreeNode) current.getLeftChild());
                         moreNodes = true;
                     } else
                         children.add(dummy);
                     if (current.getRightChild() != null) {
-                        children.add(current.getRightChild());
+                        children.add((BinaryTreeNode) current.getRightChild());
                         moreNodes = true;
                     } else
                         children.add(dummy);
@@ -63,12 +63,12 @@ public class BinaryTreePrint   {
                     printSpace(dist - 1);
                     System.out.print(current.getElement());
                     if (current.getLeftChild() != null) {
-                        children.add(current.getLeftChild());
+                        children.add((BinaryTreeNode) current.getLeftChild());
                         moreNodes = true;
                     } else
                         children.add(dummy);
                     if (current.getRightChild() != null) {
-                        children.add(current.getRightChild());
+                        children.add((BinaryTreeNode) current.getRightChild());
                         moreNodes = true;
                     } else
                         children.add(dummy);

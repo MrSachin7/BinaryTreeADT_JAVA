@@ -1,7 +1,7 @@
 public class BinaryTreeNode<E> implements BinaryTreeNodeADT<E> {
 
     private E element;
-    private BinaryTreeNode<E> leftChild, rightChild;
+    private BinaryTreeNodeADT<E> leftChild, rightChild;
 
     public BinaryTreeNode(E element) {
         this.element = element;
@@ -28,23 +28,25 @@ public class BinaryTreeNode<E> implements BinaryTreeNodeADT<E> {
     }
 
     @Override
-    public void addLeftChild(BinaryTreeNode<E> node) {
+    public void addLeftChild(BinaryTreeNodeADT<E> node) {
         this.leftChild =node;
 
     }
 
     @Override
-    public void addRightChild(BinaryTreeNode<E> node) {
+    public void addRightChild(BinaryTreeNodeADT<E> node) {
         this.rightChild = node;
 
     }
 
-    public BinaryTreeNode getLeftChild() {
-        return leftChild;
+    @Override
+    public BinaryTreeNodeADT<E> getLeftChild() {
+        return  leftChild;
     }
 
-    public BinaryTreeNode getRightChild() {
-        return rightChild;
+    @Override
+    public BinaryTreeNodeADT<E> getRightChild() {
+        return  rightChild;
     }
 
 
