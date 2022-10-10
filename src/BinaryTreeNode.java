@@ -1,4 +1,6 @@
-public class BinaryTreeNode<E> implements BinaryTreeNodeADT<E> {
+import java.util.concurrent.ConcurrentMap;
+
+public class BinaryTreeNode<E extends Comparable<E>> implements BinaryTreeNodeADT<E> {
 
     private E element;
     private BinaryTreeNodeADT<E> leftChild, rightChild;

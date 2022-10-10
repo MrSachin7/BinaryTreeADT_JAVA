@@ -1,36 +1,31 @@
-public class BinarySearchTreeNode<E> implements BinarySearchTreeADT  {
+import java.util.concurrent.ConcurrentMap;
 
+public class BinarySearchTreeNode<E extends Comparable<E>> extends BinaryTreeNode<E> {
 
-    public BinarySearchTreeNode(E element) {
+    private E element;
+    private BinarySearchTreeNode<E> leftChild, rightChild;
+
+    public BinarySearchTreeNode() {
+        this.element = null;
+        leftChild = null;
+        rightChild = null;
     }
 
     @Override
-    public boolean insert(Object element) {
-        return false;
+    public BinarySearchTreeNode<E> getLeftChild() {
+        return leftChild;
     }
 
     @Override
-    public boolean removeElement(Object element) {
-        return false;
+    public BinarySearchTreeNode<E> getRightChild() {
+        return rightChild;
     }
 
-    @Override
-    public Object findMin() {
-        return null;
+    public void addLeftChild(BinarySearchTreeNode<E> node) {
+        this.leftChild = node;
     }
 
-    @Override
-    public Object findMax() {
-        return null;
-    }
-
-    @Override
-    public boolean contains(Object element) {
-        return false;
-    }
-
-    @Override
-    public void reBalance() {
-
+    public void addRightChild(BinarySearchTreeNode<E> node) {
+        this.rightChild = node;
     }
 }

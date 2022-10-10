@@ -179,6 +179,7 @@ class BinaryTreeTest {
         BinaryTreeNode<Integer> node11 = new BinaryTreeNode(152);
         BinaryTreeNode<Integer> node12 = new BinaryTreeNode(310);
 
+        // setup nodes
         node.addLeftChild(node1);
         node.addRightChild(node2);
         node1.addRightChild(node3);

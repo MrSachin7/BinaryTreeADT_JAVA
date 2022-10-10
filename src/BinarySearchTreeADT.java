@@ -1,4 +1,4 @@
-public interface BinarySearchTreeADT<E> {
+public interface BinarySearchTreeADT<E extends Comparable<E>> {
 
     /**
      * Add an element to the tree.
