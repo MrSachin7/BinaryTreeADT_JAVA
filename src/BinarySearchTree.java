@@ -104,17 +104,28 @@ public class BinarySearchTree<E extends Comparable<E>> implements BinarySearchTr
     @Override
     public E findMin() {
 
+        BinarySearchTreeNode<E> startNode = root;
 
-        E minVal = (E) root.getElement();
-        while (root.getLeftChild()!=null){
+        E minVal = (E) startNode.getElement();
+        while (startNode.getLeftChild()!=null){
+            minVal = (E) startNode.getLeftChild().getElement();
+            startNode = startNode.getLeftChild();
 
         }
-
+        return minVal;
     }
 
     @Override
     public E findMax() {
-        return null;
+        BinarySearchTreeNode<E> startNode = root;
+
+        E maxVal = (E) startNode.getElement();
+        while (startNode.getRightChild()!=null){
+            maxVal = (E) startNode.getRightChild().getElement();
+            startNode = startNode.getRightChild();
+
+        }
+        return maxVal;
     }
 
     @Override
