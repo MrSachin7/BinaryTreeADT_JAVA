@@ -1,17 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryTree<E>{
+public class BinaryTree<E> {
 
     private BinaryTreeNode<E> root;
     private int size;
 
 
+
+
     public BinaryTree(BinaryTreeNode root) {
         this.root = root;
+        size = size();
     }
 
     public BinaryTree() {
+        size =0;
+
         root = null;
     }
 
@@ -66,7 +71,6 @@ public class BinaryTree<E>{
     }
 
 
-
     public ArrayList<E> inOrder() {
         ArrayList<E> temp = new ArrayList<>();
         addInOrder(root, temp);
@@ -74,11 +78,11 @@ public class BinaryTree<E>{
 
     }
 
-    private void addInOrder(BinaryTreeNode<E> node,List<E> listToAddOn){
-        if (node==null){
+    private void addInOrder(BinaryTreeNode<E> node, List<E> listToAddOn) {
+        if (node == null) {
             return;
         }
-        if (listToAddOn ==null){
+        if (listToAddOn == null) {
             listToAddOn = new ArrayList<>();
         }
         addInOrder(node.getLeftChild(), listToAddOn);
@@ -91,16 +95,16 @@ public class BinaryTree<E>{
 
 
     public ArrayList<E> preOrder() {
-        ArrayList<E> temp= new ArrayList<>();
+        ArrayList<E> temp = new ArrayList<>();
         addPreOrder(root, temp);
         return temp;
     }
 
-    private void addPreOrder(BinaryTreeNode<E> node,List<E> listToAddOn){
-        if (node==null){
+    private void addPreOrder(BinaryTreeNode<E> node, List<E> listToAddOn) {
+        if (node == null) {
             return;
         }
-        if (listToAddOn ==null){
+        if (listToAddOn == null) {
             listToAddOn = new ArrayList<>();
         }
         listToAddOn.add(node.getElement());
@@ -115,11 +119,12 @@ public class BinaryTree<E>{
         addPostOrder(root, temp);
         return temp;
     }
-    private void addPostOrder(BinaryTreeNode<E> node,List<E> listToAddOn){
-        if (node==null){
+
+    private void addPostOrder(BinaryTreeNode<E> node, List<E> listToAddOn) {
+        if (node == null) {
             return;
         }
-        if (listToAddOn ==null){
+        if (listToAddOn == null) {
             listToAddOn = new ArrayList<>();
         }
 
@@ -134,20 +139,20 @@ public class BinaryTree<E>{
         int height = height();
         ArrayList<E> temp = new ArrayList<>();
         for (int i = 1; i <= height; i++) {
-            addCurrentLevel(root, i,temp );
+            addCurrentLevel(root, i, temp);
         }
         return temp;
     }
 
-    private void addCurrentLevel(BinaryTreeNode<E> node, int level, List<E> listToAddOn){
-        if (node ==null){
+    private void addCurrentLevel(BinaryTreeNode<E> node, int level, List<E> listToAddOn) {
+        if (node == null) {
             return;
         }
-        if (level==1){
+        if (level == 1) {
             listToAddOn.add(node.getElement());
-        } else if (level >1){
-            addCurrentLevel(node.getLeftChild(), level-1, listToAddOn);
-            addCurrentLevel(node.getRightChild(), level-1, listToAddOn);
+        } else if (level > 1) {
+            addCurrentLevel(node.getLeftChild(), level - 1, listToAddOn);
+            addCurrentLevel(node.getRightChild(), level - 1, listToAddOn);
         }
 
 
@@ -157,15 +162,15 @@ public class BinaryTree<E>{
         return maxHeight(root);
     }
 
-    private int maxHeight(BinaryTreeNode node){
-        if (node == null){
+    private int maxHeight(BinaryTreeNode node) {
+        if (node == null) {
             return 0;
         }
         int leftHeight = maxHeight(node.getLeftChild());
         int rightHeight = maxHeight(node.getRightChild());
 
         // return whichever has more height+1;
-        return leftHeight > rightHeight ? (leftHeight+1) : (rightHeight+1);
+        return leftHeight > rightHeight ? (leftHeight + 1) : (rightHeight + 1);
 
     }
 }
