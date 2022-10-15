@@ -1,31 +1,27 @@
-import java.util.concurrent.ConcurrentMap;
-
 public class BinarySearchTreeNode<E extends Comparable<E>> extends BinaryTreeNode<E> {
 
     private E element;
-    private BinarySearchTreeNode<E> leftChild, rightChild;
 
     public BinarySearchTreeNode() {
+        super();
         this.element = null;
-        leftChild = null;
-        rightChild = null;
+
+    }
+
+    public BinarySearchTreeNode(E element){
+        this.element = element;
+
+    }
+
+
+    public void setElement(E element) {
+        this.element = element;
     }
 
     @Override
-    public BinarySearchTreeNode<E> getLeftChild() {
-        return leftChild;
+    public E getElement() {
+        return element;
     }
 
-    @Override
-    public BinarySearchTreeNode<E> getRightChild() {
-        return rightChild;
-    }
 
-    public void addLeftChild(BinarySearchTreeNode<E> node) {
-        this.leftChild = node;
-    }
-
-    public void addRightChild(BinarySearchTreeNode<E> node) {
-        this.rightChild = node;
-    }
 }

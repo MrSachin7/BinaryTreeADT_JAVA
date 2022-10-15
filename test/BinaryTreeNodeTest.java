@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryTreeNodeTest {
 
-    BinaryTreeNodeADT<Integer> nodeADT;
+    BinaryTreeNode<Integer> node;
 
     @BeforeEach
     void setUp() {
-         nodeADT = new BinaryTreeNode<>();
+         node = new BinaryTreeNode<>();
     }
 
     @AfterEach
@@ -19,33 +19,33 @@ class BinaryTreeNodeTest {
 
     @Test
     void getRootWorksTest(){
-        nodeADT.setElement(10);
-        assertEquals(10, nodeADT.getElement());
+        node.setElement(10);
+        assertEquals(10, node.getElement());
     }
 
     @Test
     void addLeftChildAndGetRightChild(){
 
-        nodeADT.addLeftChild(new BinaryTreeNode<>(15));
-        assertEquals(15, nodeADT.getLeftChild().getElement());
+        node.addLeftChild(new BinaryTreeNode<>(15));
+        assertEquals(15, node.getLeftChild().getElement());
     }
 
     @Test
     void testLeftChildNullInTheBeginning(){
-        assertNull(nodeADT.getLeftChild());
+        assertNull(node.getLeftChild());
     }
 
     @Test
     void testRightChildNullInTheBeginning(){
-        assertNull(nodeADT.getRightChild());
+        assertNull(node.getRightChild());
     }
 
 
 
     @Test
     void addRightChildAndGetRightChild(){
-        nodeADT.addRightChild(new BinaryTreeNode<>(15));
-        assertEquals(15, nodeADT.getRightChild().getElement());
+        node.addRightChild(new BinaryTreeNode<>(15));
+        assertEquals(15, node.getRightChild().getElement());
     }
 
 

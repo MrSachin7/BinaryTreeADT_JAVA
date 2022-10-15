@@ -1,9 +1,9 @@
 import java.util.concurrent.ConcurrentMap;
 
-public class BinaryTreeNode<E extends Comparable<E>> implements BinaryTreeNodeADT<E> {
+public class BinaryTreeNode<E>  {
 
     private E element;
-    private BinaryTreeNodeADT<E> leftChild, rightChild;
+    private BinaryTreeNode<E> leftChild, rightChild;
 
     public BinaryTreeNode(E element) {
         this.element = element;
@@ -19,7 +19,7 @@ public class BinaryTreeNode<E extends Comparable<E>> implements BinaryTreeNodeAD
     }
 
 
-    @Override
+
     public void setElement(E element) {
         this.element = element;
 
@@ -29,25 +29,25 @@ public class BinaryTreeNode<E extends Comparable<E>> implements BinaryTreeNodeAD
         return element;
     }
 
-    @Override
-    public void addLeftChild(BinaryTreeNodeADT<E> node) {
+
+    public void addLeftChild(BinaryTreeNode<E> node) {
         this.leftChild =node;
 
     }
 
-    @Override
-    public void addRightChild(BinaryTreeNodeADT<E> node) {
+
+    public void addRightChild(BinaryTreeNode<E> node) {
         this.rightChild = node;
 
     }
 
-    @Override
-    public BinaryTreeNodeADT<E> getLeftChild() {
+
+    public BinaryTreeNode<E> getLeftChild() {
         return  leftChild;
     }
 
-    @Override
-    public BinaryTreeNodeADT<E> getRightChild() {
+
+    public BinaryTreeNode<E> getRightChild() {
         return  rightChild;
     }
 

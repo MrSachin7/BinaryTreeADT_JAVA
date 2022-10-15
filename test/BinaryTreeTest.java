@@ -8,12 +8,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryTreeTest {
-    BinaryTreeADT<Integer> binaryTreeADT;
+    BinaryTree<Integer> binaryTree;
 
 
     @BeforeEach
     void setUp() {
-        binaryTreeADT = new BinaryTree<>();
+        binaryTree = new BinaryTree<>();
 
     }
 
@@ -24,75 +24,75 @@ class BinaryTreeTest {
 
     @Test
     void initializedRootAsNull() {
-        assertNull(binaryTreeADT.getRoot());
+        assertNull(binaryTree.getRoot());
     }
 
     @Test
     void setRoot() {
-        binaryTreeADT.setRoot(new BinaryTreeNode<>(10));
-        assertEquals(10, binaryTreeADT.getRoot().getElement());
+        binaryTree.setRoot(new BinaryTreeNode<>(10));
+        assertEquals(10, binaryTree.getRoot().getElement());
     }
 
     @Test
     void isInitializedAsEmpty() {
-        assertTrue(binaryTreeADT.isEmpty());
+        assertTrue(binaryTree.isEmpty());
     }
 
     @Test
     void isNotEmptyWhenTheRootHasValue() {
-        binaryTreeADT.setRoot(new BinaryTreeNode<>(10));
-        assertFalse(binaryTreeADT.isEmpty());
+        binaryTree.setRoot(new BinaryTreeNode<>(10));
+        assertFalse(binaryTree.isEmpty());
     }
 
     @Test
     void isEmptyWhenRootNotNullButHasNoValueAndNoChild() {
 
-        binaryTreeADT.setRoot(new BinaryTreeNode<>()); // Just a  new binary tree node, this binary tree node has no value
-        assertTrue(binaryTreeADT.isEmpty());
+        binaryTree.setRoot(new BinaryTreeNode<>()); // Just a  new binary tree node, this binary tree node has no value
+        assertTrue(binaryTree.isEmpty());
     }
 
     @Test
     void containsReturnTrueWhenRootIsTheElement() {
-        binaryTreeADT.setRoot(new BinaryTreeNode<>(10));
-        assertTrue(binaryTreeADT.contains(10));
+        binaryTree.setRoot(new BinaryTreeNode<>(10));
+        assertTrue(binaryTree.contains(10));
     }
 
     @Test
     void containsTrueWhenLeftChildContainsTheValue() {
 
-        BinaryTreeNodeADT<Integer> node1 = new BinaryTreeNode(10);
-        BinaryTreeNodeADT<Integer> childNode = new BinaryTreeNode<>(15);
+        BinaryTreeNode<Integer> node1 = new BinaryTreeNode(10);
+        BinaryTreeNode<Integer> childNode = new BinaryTreeNode<>(15);
         node1.addLeftChild(childNode);
-        binaryTreeADT.setRoot(node1);
+        binaryTree.setRoot(node1);
 
-        assertTrue(binaryTreeADT.contains(15));
+        assertTrue(binaryTree.contains(15));
 
     }
 
     @Test
     void containsTrueWhenRightChildContainsTheValue() {
 
-        BinaryTreeNodeADT<Integer> node1 = new BinaryTreeNode(10);
-        BinaryTreeNodeADT<Integer> childNode = new BinaryTreeNode<>(15);
+        BinaryTreeNode<Integer> node1 = new BinaryTreeNode(10);
+        BinaryTreeNode<Integer> childNode = new BinaryTreeNode<>(15);
         node1.addRightChild(childNode);
-        binaryTreeADT.setRoot(node1);
-        assertTrue(binaryTreeADT.contains(15));
+        binaryTree.setRoot(node1);
+        assertTrue(binaryTree.contains(15));
     }
 
     @Test
     void containsFalseWhenNoChildContainsTheValue() {
-        BinaryTreeNodeADT<Integer> node1 = new BinaryTreeNode(10);
-        BinaryTreeNodeADT<Integer> childNode = new BinaryTreeNode<>(15);
+        BinaryTreeNode<Integer> node1 = new BinaryTreeNode(10);
+        BinaryTreeNode<Integer> childNode = new BinaryTreeNode<>(15);
         node1.addRightChild(childNode);
-        binaryTreeADT.setRoot(node1);
-        assertFalse(binaryTreeADT.contains(16));
+        binaryTree.setRoot(node1);
+        assertFalse(binaryTree.contains(16));
     }
 
     @Test
     void containsTrueOnASuperComplicatedTree() {
 
         setUpSuperComplexTree();
-        assertTrue(binaryTreeADT.contains(310));
+        assertTrue(binaryTree.contains(310));
     }
 
     @Test
@@ -100,19 +100,19 @@ class BinaryTreeTest {
 
 
         setUpSuperComplexTree();
-        assertFalse(binaryTreeADT.contains(311));
+        assertFalse(binaryTree.contains(311));
     }
 
     @Test
     void testSize() {
         setUpSuperComplexTree();
-        assertEquals(13, binaryTreeADT.size());
+        assertEquals(13, binaryTree.size());
     }
 
     @Test
     void testHeight() {
         setUpSuperComplexTree();
-        assertEquals(6, binaryTreeADT.height());
+        assertEquals(6, binaryTree.height());
     }
 
     @Test
@@ -120,7 +120,7 @@ class BinaryTreeTest {
         setUpSuperComplexTree();
         Integer[] inOrderArray = {21, 40, 15, 11, 10, 1, 31, 27, 152, 8, 7, 310, 5};
         ArrayList<Integer> correctInOrder = new ArrayList<>(List.of(inOrderArray));
-        assertEquals(correctInOrder, binaryTreeADT.inOrder());
+        assertEquals(correctInOrder, binaryTree.inOrder());
     }
 
     @Test
@@ -128,7 +128,7 @@ class BinaryTreeTest {
         setUpSuperComplexTree();
         Integer[] inOrderArray = {21, 40, 15, 11, 10, 1, 31, 27, 152, 8, 7, 310, 6};
         ArrayList<Integer> correctInOrder = new ArrayList<>(List.of(inOrderArray));
-        assertNotEquals(correctInOrder, binaryTreeADT.inOrder());
+        assertNotEquals(correctInOrder, binaryTree.inOrder());
     }
 
     @Test
@@ -136,7 +136,7 @@ class BinaryTreeTest {
         setUpSuperComplexTree();
         Integer[] preOrder = {10, 15, 21, 40, 11, 5, 27, 1, 31, 8, 152, 7, 310};
         ArrayList<Integer> correctPreOrder = new ArrayList<>(List.of(preOrder));
-        assertEquals(correctPreOrder, binaryTreeADT.preOrder());
+        assertEquals(correctPreOrder, binaryTree.preOrder());
     }
 
     @Test
@@ -144,7 +144,7 @@ class BinaryTreeTest {
         setUpSuperComplexTree();
         Integer[] preOrder = {10, 15, 21, 40, 11, 5, 27, 1, 31, 8, 152, 7, 311};
         ArrayList<Integer> correctPreOrder = new ArrayList<>(List.of(preOrder));
-        assertNotEquals(correctPreOrder, binaryTreeADT.preOrder());
+        assertNotEquals(correctPreOrder, binaryTree.preOrder());
     }
 
     @Test
@@ -152,7 +152,7 @@ class BinaryTreeTest {
         setUpSuperComplexTree();
         Integer[] postOrder = {40, 21, 11, 15, 31, 1, 152, 310, 7, 8, 27, 5, 10};
         ArrayList<Integer> correctPostOrder = new ArrayList<>(List.of(postOrder));
-        assertEquals(correctPostOrder, binaryTreeADT.postOrder());
+        assertEquals(correctPostOrder, binaryTree.postOrder());
     }
 
     @Test
@@ -160,7 +160,7 @@ class BinaryTreeTest {
         setUpSuperComplexTree();
         Integer[] levelOrder = {10,15,5,21,11,27,40,1,8,31,152,7,310};
         ArrayList<Integer> correctLevelOrder = new ArrayList<>(List.of(levelOrder));
-        assertEquals(correctLevelOrder, binaryTreeADT.levelOrder());
+        assertEquals(correctLevelOrder, binaryTree.levelOrder());
     }
 
 
@@ -192,10 +192,10 @@ class BinaryTreeTest {
         node9.addRightChild(node10);
         node9.addLeftChild(node11);
         node10.addRightChild(node12);
-        binaryTreeADT.setRoot(node);
+        binaryTree.setRoot(node);
 
         BinaryTreePrint printer = new BinaryTreePrint();
-        printer.printTree((BinaryTreeNode) binaryTreeADT.getRoot());
+        printer.printTree((BinaryTreeNode) binaryTree.getRoot());
     }
 
 

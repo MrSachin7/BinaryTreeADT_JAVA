@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryTree<E> implements BinaryTreeADT<E> {
+public class BinaryTree<E>{
 
-    private BinaryTreeNodeADT<E> root;
+    private BinaryTreeNode<E> root;
     private int size;
 
 
-    public BinaryTree(BinaryTreeNodeADT root) {
+    public BinaryTree(BinaryTreeNode root) {
         this.root = root;
     }
 
@@ -15,17 +15,17 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
         root = null;
     }
 
-    @Override
-    public BinaryTreeNodeADT<E> getRoot() {
+
+    public BinaryTreeNode<E> getRoot() {
         return root;
     }
 
-    @Override
-    public void setRoot(BinaryTreeNodeADT<E> root) {
+
+    public void setRoot(BinaryTreeNode<E> root) {
         this.root = root;
     }
 
-    @Override
+
     public boolean isEmpty() {
 
         if (root == null) return true;
@@ -36,25 +36,24 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
         return false;
     }
 
-    @Override
     public int size() {
         return size(root);
 
     }
 
-    private int size(BinaryTreeNodeADT<E> node) {
+    private int size(BinaryTreeNode<E> node) {
         if (node == null) {
             return 0;
         }
         return size(node.getLeftChild()) + size(node.getRightChild()) + 1;
     }
 
-    @Override
+
     public boolean contains(E element) {
         return contains(element, root);
     }
 
-    private boolean contains(E element, BinaryTreeNodeADT<E> nodeADT) {
+    private boolean contains(E element, BinaryTreeNode<E> nodeADT) {
 
         if (nodeADT == null) return false;
         if (nodeADT.getElement().equals(element)) return true;
@@ -67,7 +66,7 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
     }
 
 
-    @Override
+
     public ArrayList<E> inOrder() {
         ArrayList<E> temp = new ArrayList<>();
         addInOrder(root, temp);
@@ -75,7 +74,7 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
-    private void addInOrder(BinaryTreeNodeADT<E> node,List<E> listToAddOn){
+    private void addInOrder(BinaryTreeNode<E> node,List<E> listToAddOn){
         if (node==null){
             return;
         }
@@ -90,14 +89,14 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
-    @Override
+
     public ArrayList<E> preOrder() {
         ArrayList<E> temp= new ArrayList<>();
         addPreOrder(root, temp);
         return temp;
     }
 
-    private void addPreOrder(BinaryTreeNodeADT<E> node,List<E> listToAddOn){
+    private void addPreOrder(BinaryTreeNode<E> node,List<E> listToAddOn){
         if (node==null){
             return;
         }
@@ -111,13 +110,12 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
-    @Override
     public ArrayList<E> postOrder() {
         ArrayList<E> temp = new ArrayList<>();
         addPostOrder(root, temp);
         return temp;
     }
-    private void addPostOrder(BinaryTreeNodeADT<E> node,List<E> listToAddOn){
+    private void addPostOrder(BinaryTreeNode<E> node,List<E> listToAddOn){
         if (node==null){
             return;
         }
@@ -132,7 +130,6 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
-    @Override
     public ArrayList<E> levelOrder() {
         int height = height();
         ArrayList<E> temp = new ArrayList<>();
@@ -142,7 +139,7 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
         return temp;
     }
 
-    private void addCurrentLevel(BinaryTreeNodeADT<E> node, int level, List<E> listToAddOn){
+    private void addCurrentLevel(BinaryTreeNode<E> node, int level, List<E> listToAddOn){
         if (node ==null){
             return;
         }
@@ -156,12 +153,11 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
-    @Override
     public int height() {
         return maxHeight(root);
     }
 
-    private int maxHeight(BinaryTreeNodeADT node){
+    private int maxHeight(BinaryTreeNode node){
         if (node == null){
             return 0;
         }
