@@ -7,25 +7,17 @@ public class Main {
 
         BinarySearchTree<Integer> searchTree = new BinarySearchTree<>();
 
-        searchTree.insert(5);
-        searchTree.insert(6);
-        searchTree.insert(9);
+        for (int i = 1; i <= 15; i++) {
+            searchTree.insert(i);
+        }
+        System.out.println(searchTree.removeElement(6));
+
+        new BinaryTreePrint().printTree(searchTree.getRoot());
+
+        System.out.println("\n"+searchTree.preOrder());
 
 
-        searchTree.insert(8);
 
 
-        searchTree.insert(1);
-        searchTree.insert(4);
-        searchTree.insert(2);
-        searchTree.insert(7);
-        searchTree.insert(3);
-        searchTree.insert(10);
-
-        System.out.println(searchTree.removeElement(12));
-
-
-        BinaryTreePrint printer = new BinaryTreePrint();
-        printer.printTree((BinaryTreeNode) searchTree.getRoot());
     }
 }

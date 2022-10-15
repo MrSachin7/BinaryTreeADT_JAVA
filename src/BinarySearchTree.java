@@ -1,17 +1,18 @@
+import java.util.Vector;
+
 public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
 
     boolean isFound = false;
 
     public BinarySearchTree() {
-     super();
+        super();
     }
-
 
 
     public boolean insert(E element) {
 
         try {
-            setRoot( insert(element, (BinarySearchTreeNode<E>) getRoot()));
+            setRoot(insert(element, (BinarySearchTreeNode<E>) getRoot()));
             return true;
         } catch (Exception e) {
             return false;
@@ -38,9 +39,7 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
     public boolean removeElement(E element) {
 
 
-        removeElement(element, (BinarySearchTreeNode<E>) getRoot());
-
-
+        setRoot(removeElement(element, (BinarySearchTreeNode<E>) getRoot()));
         return isFound;
     }
 
@@ -60,11 +59,11 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
 
         // Recur down the tree
         if (element.compareTo(node.getElement()) < 0) {
-            removeElement(element, (BinarySearchTreeNode<E>) node.getLeftChild());
+            node.addLeftChild(removeElement(element, (BinarySearchTreeNode<E>) node.getLeftChild()));
             return node;
 
         } else if (element.compareTo(node.getElement()) > 0) {
-            removeElement(element, (BinarySearchTreeNode<E>) node.getRightChild());
+            node.addRightChild(removeElement(element, (BinarySearchTreeNode<E>) node.getRightChild()));
             return node;
         }
 
@@ -162,6 +161,44 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
     }
 
     public void reBalance() {
+       setRoot( reBalance((BinarySearchTreeNode<E>) getRoot()));
+    }
+
+    private BinarySearchTreeNode<E> reBalance(BinarySearchTreeNode<E> node){
+        Vector<BinarySearchTreeNode<E>> nodes = new Vector<>();
+        storeBinarySearchTreeNodes(node, nodes);
+
+
+        int n = nodes.size();
+        return buildTreeUtil(nodes, 0, n-1);
+    }
+
+    private void storeBinarySearchTreeNodes(BinarySearchTreeNode<E> node, Vector<BinarySearchTreeNode<E>> nodes) {
+        // Base case
+        if (node ==null) return;
+
+        storeBinarySearchTreeNodes((BinarySearchTreeNode<E>) node.getLeftChild(), nodes);
+        nodes.add(node);
+        storeBinarySearchTreeNodes((BinarySearchTreeNode<E>) node.getRightChild(), nodes);
 
     }
+
+    private BinarySearchTreeNode<E> buildTreeUtil(Vector<BinarySearchTreeNode<E>> nodes, int start, int end) {
+        // base case
+        if (start > end) return null;
+
+        // Make the middle element root
+        int mid = (start + end) /2;
+        BinarySearchTreeNode<E> node = nodes.get(mid);
+
+        // Construct left and right subtrees using inorder traversal
+        node.addLeftChild(buildTreeUtil(nodes, start, mid-1));
+        node.addRightChild(buildTreeUtil(nodes, mid+1, end));
+
+        return node;
+
+
+    }
+
+
 }
